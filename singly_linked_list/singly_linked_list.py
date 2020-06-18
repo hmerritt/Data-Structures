@@ -24,6 +24,16 @@ class LinkedList:
             current_node = current_node.next_node
         return max
 
+    def length(self):
+        if self.isEmpty():
+            return 0
+        num = 0
+        current_node = self.head
+        while current_node is not None:
+            num += 1
+            current_node = current_node.next_node
+        return num
+
     def add_to_head(self, value):
         node = Node(value)
 
@@ -65,6 +75,21 @@ class LinkedList:
 
         self.head = self.head.next_node
         return head
+
+
+    def remove_tail(self):
+        if not self.tail:
+            return None
+
+        tail = self.tail.value
+
+        if self.tail.next_node is None:
+            self.head = None
+            self.tail = None
+            return tail
+
+        self.tail = self.tail.next_node
+        return tail
 
     def contains(self, value):
         if self.isEmpty():
